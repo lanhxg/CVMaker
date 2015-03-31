@@ -1,6 +1,6 @@
-/home/lanhxg/workspace/CVTest/obj/local/armeabi-v7a/objs/vmaker/main.o: \
- /home/lanhxg/workspace/CVTest/jni/main.cpp \
- /home/lanhxg/workspace/CVTest/jni/internal/common.h \
+/home/lanhxg/workspace/CVMaker/obj/local/armeabi-v7a/objs/vmaker/main.o: \
+ /home/lanhxg/workspace/CVMaker/jni/main.cpp \
+ /home/lanhxg/workspace/CVMaker/jni/internal/common.h \
  /home/lanhxg/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/stdio.h \
  /home/lanhxg/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/sys/cdefs.h \
  /home/lanhxg/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/sys/cdefs_elf.h \
@@ -26,7 +26,7 @@
  /home/lanhxg/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/jni.h \
  /home/lanhxg/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/android/log.h
 
-/home/lanhxg/workspace/CVTest/jni/internal/common.h:
+/home/lanhxg/workspace/CVMaker/jni/internal/common.h:
 
 /home/lanhxg/android-ndk-r9d/platforms/android-19/arch-arm/usr/include/stdio.h:
 
