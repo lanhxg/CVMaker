@@ -11,7 +11,13 @@ include $(OPENCV_PACKAGE_DIR)/sdk/native/jni/OpenCV.mk
 LOCAL_CFLAGS += -I. \
 				-D_STLP_USE_NEWALLOC
 
-LOCAL_LDLIBS := -llog
+LOCAL_LDLIBS := -llog 
+
+EXTERN_LIB_PATH=$(LOCAL_PATH)/lib
+
+
+#LOCAL_LDFLAGS += -L$(EXTERN_LIB_PATH) \
+				  $(EXTERN_LIB_PATH)/libgnustl_static.a
 
 LOCAL_MODULE := vmaker
 LOCAL_SRC_FILES :=main.cpp \
