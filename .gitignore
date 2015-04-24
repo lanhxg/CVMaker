@@ -1,0 +1,9 @@
+obj
+gen
+tags
+*.swp
+*.swo
+*~
+*.o
+*.o.d
+
