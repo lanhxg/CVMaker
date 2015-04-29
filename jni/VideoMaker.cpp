@@ -57,6 +57,15 @@ void VideoMaker::nativeAddImg(JNIEnv * env, jobject obj, jstring img) {
     tv->addImg(file);
 }
 
+void VideoMaker::nativeCreate(JNIEnv *env, jobject obj) {
+    VideoMaker  *tv = fromObject(env, obj);
+    if (!tv) {
+        LOGE("fail to get VideoMaker Object");
+        return;
+    }
+    tv->create();
+}
+
 void VideoMaker::nativeRelease(JNIEnv *env, jobject obj) {
     VideoMaker * tv = fromObject(env, obj);
     if (!tv) {
@@ -72,6 +81,7 @@ void VideoMaker::nativeRelease(JNIEnv *env, jobject obj) {
 JNINativeMethod VideoMaker::_native_methods[] = {
     NATIVE_METHOD(Init,"(Ljava/lang/String;IIIZ)V"),
     NATIVE_METHOD(AddImg, "(Ljava/lang/String;)V"),
+    NATIVE_METHOD(Create, "()V"),
     NATIVE_METHOD(Release, "()V"),
 };
 #undef NATIVE_METHOD

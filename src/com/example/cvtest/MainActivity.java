@@ -44,5 +44,7 @@ public class MainActivity extends ActionBarActivity {
     
     private void createVideo(String file, int fps, int w, int h, boolean color) {
         VideoMaker maker = new VideoMaker(file, fps, w, h, color);
+        maker.addImage("/sdcard/weibo_preview.jpeg");
+        maker.createVideo();
     }
 }

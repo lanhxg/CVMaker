@@ -24,8 +24,8 @@ public class VideoMaker{
         nativeAddImg(file);
     }
     
-    public void saveFrames(){
-        nativeSave();
+    public void createVideo(){
+        nativeCreate();
     }
     
     public void release() {
@@ -34,7 +34,7 @@ public class VideoMaker{
     
     private native void nativeInit(String file, int fps, int w, int h, boolean bcolor);
     private native void nativeAddImg(String img);
-    private native void nativeSave();
+    private native void nativeCreate();
     private native void nativeRelease();
     
     private long mNativeHandle;

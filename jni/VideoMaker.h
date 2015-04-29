@@ -51,7 +51,6 @@ public:
         }
 
         m_builder->init(m_video, m_fps, m_frameWith, m_frameHeight, m_bColor);
-
         for (FileList::iterator it = m_fileList.begin(); it != m_fileList.end(); ++it) {
             m_builder->save(*it);
         }
@@ -85,6 +84,7 @@ private:
 
     static void nativeInit(JNIEnv *, jobject, jstring, jint, jint, jint, jboolean);
     static void nativeAddImg(JNIEnv *, jobject, jstring);
+    static void nativeCreate(JNIEnv *, jobject);
     static void nativeRelease(JNIEnv *, jobject);
     static void registerVideoMaker(JNIEnv *);
     static VideoMaker* fromObject(JNIEnv *env, jobject obj) {
