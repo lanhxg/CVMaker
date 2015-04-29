@@ -1,11 +1,14 @@
 
 #include "VideoMaker.h"
+#include "cvVideoBuilder.h"
 
 /////////////////////////////////////////////////////
 jmethodID VideoMaker::g_init;
 jmethodID VideoMaker::g_addImg;
 jmethodID VideoMaker::g_save;
 jmethodID VideoMaker::g_release;
+
+jfieldID VideoMaker::g_nativeHandleField;
 
 #define VideoMakerClassName "com/video/maker/VideoMaker"
 
@@ -26,11 +29,15 @@ void VideoMaker::Init(JNIEnv *env) {
 }
 
 void VideoMaker::nativeInit(JNIEnv * env, jobject obj, jstring video, jint fps, jint frameWidth, jint frameHeight, jboolean bColor) {
-    VideoMaker * tv = fromObject(env, obj);
+
+    Init(env);
+    VideoMaker * tv = new VideoMaker(new cvVideoBuilder);
     if (!tv) { 
-        LOGE("fail to get VideoMaker Object");
+        LOGE("fail to create cvVideoBuilder Object");
         return;
     };
+    tv->attachObject(env, obj);
+
     const char * str =  env->GetStringUTFChars(video, NULL);
     string file(str);
     env->ReleaseStringUTFChars(video, str);
@@ -64,7 +71,7 @@ void VideoMaker::nativeRelease(JNIEnv *env, jobject obj) {
 {"native"#name, signature, (void*)(VideoMaker::native##name)}
 JNINativeMethod VideoMaker::_native_methods[] = {
     NATIVE_METHOD(Init,"(Ljava/lang/String;IIIZ)V"),
-    NATIVE_METHOD(AddImg, "(Ljava/lang/String)V"),
+    NATIVE_METHOD(AddImg, "(Ljava/lang/String;)V"),
     NATIVE_METHOD(Release, "()V"),
 };
 #undef NATIVE_METHOD

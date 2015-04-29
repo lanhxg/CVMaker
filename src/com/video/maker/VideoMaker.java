@@ -8,6 +8,7 @@
 
 package com.video.maker;
 
+
 public class VideoMaker{
     static {
         System.loadLibrary("vmaker");
@@ -15,12 +16,12 @@ public class VideoMaker{
     
     private static final String LOG_TAG = "VideoMaker";
     
-    public VideoMaker(String file) {
-        
+    public VideoMaker(String file, int fps, int w, int h, boolean color) {
+        nativeInit(file, fps, w, h, color);
     }
     
     public void addImage(String file) {
-        nativeAddImage(file);
+        nativeAddImg(file);
     }
     
     public void saveFrames(){
@@ -32,7 +33,7 @@ public class VideoMaker{
     }
     
     private native void nativeInit(String file, int fps, int w, int h, boolean bcolor);
-    private native void nativeAddImage(String img);
+    private native void nativeAddImg(String img);
     private native void nativeSave();
     private native void nativeRelease();
     

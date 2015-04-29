@@ -40,6 +40,10 @@ class VideoMaker{
 public:
     VideoMaker(VideoBuilder* builder): m_builder(builder) {}
 
+    void attachObject(JNIEnv *env, jobject obj) {
+        env->SetLongField(obj, g_nativeHandleField, (jlong)this);
+    }
+
     void create() {
         if (!m_builder) {
             LOGE("get empty video builder");
