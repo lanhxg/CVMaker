@@ -1,8 +1,13 @@
 #ifndef VIDEO_MAKER_H__
 #define VIDEO_MAKER_H__
 
+#include "internal/common.h"
 #include <vector>
 #include <string>
+#include <jni.h>
+
+using std::string;
+using std::vector;
 
 class VideoBuilder {
 public:
@@ -14,8 +19,6 @@ public:
 
 ////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////
-using std::string;
-using std::vector;
 class VideoMaker{
     typedef vector<string> FileList;
     FileList m_fileList;
@@ -35,7 +38,7 @@ class VideoMaker{
     static jfieldID g_nativeHandleField;
 
 public:
-    VideoMaker(VideoBuiler* builder): m_builder(builder) {}
+    VideoMaker(VideoBuilder* builder): m_builder(builder) {}
 
     void create() {
         if (!m_builder) {
@@ -58,15 +61,15 @@ public:
         m_bColor = color;
     }
 
-    void addImg(const string& img) {
-        m_fileList.push_back(img);
-    }
-
     void release() {
         if (m_builder) {
             m_builder->release();
             m_builder = NULL;
         }
+    }
+
+    void addImg(const string& img) {
+        m_fileList.push_back(img);
     }
 
     ~VideoMaker() { release(); }

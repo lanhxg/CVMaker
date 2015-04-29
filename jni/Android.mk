@@ -21,7 +21,8 @@ EXTERN_LIB_PATH=$(LOCAL_PATH)/lib
 
 LOCAL_MODULE := vmaker
 LOCAL_SRC_FILES :=main.cpp \
-	              VideoMaker.cpp
+	              VideoMaker.cpp \
+				  cvVideoBuilder.cpp
 
 LOCAL_ALLOW_UNDEFINED_SYMBOLS := true
 LOCAL_WHOLE_STATIC_LIBRARIES += android_support

@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <string>
+#include "VideoMaker.h"
 
 using std::string;
 using std::vector;
@@ -17,24 +18,22 @@ class cvVideoBuilder: public VideoBuilder {
 public:
     cvVideoBuilder(): m_writer(NULL){}
 
-    void init(const string& file, int fps, int fw, int fh, bool bcolor) {
+    virtual void init(const string& file, int fps, int fw, int fh, bool bcolor) {
         release();
         m_writer = cvCreateVideoWriter(file.c_str(),
                     CV_FOURCC('X','V','I','D'),
                     fps,
                     cvSize(fw,fh),
-                    bolor);
+                    bcolor);
     }
 
-    void save(const string& img) {
-        IplImage* img = NULL;
-        for (FileList::iterator it = m_fileList.begin() ; it != m_fileList.end(); ++it) {
-            img = cvLoadImage(it->c_str());
-            cvWriteFrame(m_writer, img);
-        }
+    virtual void save(const string& img) {
+        IplImage* cvImg = NULL;
+        cvImg = cvLoadImage(img.c_str());
+        cvWriteFrame(m_writer, cvImg);
     }
 
-    void release() {
+    virtual void release() {
         if (m_writer) {
             cvReleaseVideoWriter(&m_writer);
             m_writer = NULL;

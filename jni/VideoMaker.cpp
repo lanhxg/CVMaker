@@ -38,7 +38,7 @@ void VideoMaker::nativeInit(JNIEnv * env, jobject obj, jstring video, jint fps, 
     tv->init(file, fps, frameWidth, frameHeight, bColor);
 }
 
-void nativeAddImg(JNIEnv * env, jobject obj, jstring img) {
+void VideoMaker::nativeAddImg(JNIEnv * env, jobject obj, jstring img) {
     VideoMaker * tv = fromObject(env, obj);
     if (!tv) {
         LOGE("fail to get VideoMaker Object");
@@ -50,7 +50,7 @@ void nativeAddImg(JNIEnv * env, jobject obj, jstring img) {
     tv->addImg(file);
 }
 
-void nativeRelease(JNIEnv *env, jobject obj) {
+void VideoMaker::nativeRelease(JNIEnv *env, jobject obj) {
     VideoMaker * tv = fromObject(env, obj);
     if (!tv) {
         LOGE("fail to get VideoMaker Object");
